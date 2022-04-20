@@ -1,0 +1,11 @@
+const Sequelize = require("sequelize");
+
+const sequelize = new Sequelize(
+  "engiefgb_tablet",
+  "engiefgb_tablets",
+  "tXVajpI$]gle",
+  { host: "198.54.116.200", dialect: "mysql", operatorsAliases: false }
+);
+
+module.exports = sequelize;
+global.sequelize = sequelize;
