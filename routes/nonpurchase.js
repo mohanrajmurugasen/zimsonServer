@@ -48,4 +48,25 @@ router.get("/nonpurchase", async (req, res) => {
     });
 });
 
+router.get(
+  "/nonpurchaseById/:location/:brand/:price/:star",
+  async (req, res) => {
+    await db.nonpurchase
+      .findAll({
+        where: {
+          location: req.params.location,
+          brand: req.params.brand,
+          price: req.params.price,
+          star: req.params.star,
+        },
+      })
+      .then((user) => {
+        res.send(user);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  }
+);
+
 module.exports = router;

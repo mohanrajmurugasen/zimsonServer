@@ -49,4 +49,21 @@ router.get("/service", async (req, res) => {
     });
 });
 
+router.get("/serviceById/:location/:receipt/:quality", async (req, res) => {
+  await db.service
+    .findAll({
+      where: {
+        location: req.params.location,
+        receipt: req.params.receipt,
+        quality: req.params.quality,
+      },
+    })
+    .then((user) => {
+      res.send(user);
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
+});
+
 module.exports = router;

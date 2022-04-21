@@ -50,4 +50,22 @@ router.get("/purchase", async (req, res) => {
     });
 });
 
+router.get("/purchaseById/:location/:brand/:star/:rate", async (req, res) => {
+  await db.purchase
+    .findAll({
+      where: {
+        location: req.params.location,
+        brand: req.params.brand,
+        star: req.params.star,
+        rate: req.params.rate,
+      },
+    })
+    .then((user) => {
+      res.send(user);
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
+});
+
 module.exports = router;

@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 5000;
 const nonpurchase = require("./routes/nonpurchase");
 const purchase = require("./routes/purchase");
 const service = require("./routes/service");
+const location = require("./routes/location");
+const brand = require("./routes/brand");
 
 const option = {
   definition: {
@@ -40,6 +42,8 @@ app.use("/swagger", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 app.use("/", purchase);
 app.use("/", nonpurchase);
 app.use("/", service);
+app.use("/", location);
+app.use("/", brand);
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
